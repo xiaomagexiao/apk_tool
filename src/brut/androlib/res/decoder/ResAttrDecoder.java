@@ -33,9 +33,14 @@ public class ResAttrDecoder {
 
         String decoded = null;
         if (attrResId != 0) {
-            ResAttr attr = (ResAttr) getCurrentPackage().getResTable()
-                    .getResSpec(attrResId).getDefaultResource().getValue();
-            decoded = attr.convertToResXmlFormat(resValue);
+            try {
+                ResAttr attr = (ResAttr) getCurrentPackage().getResTable()
+                        .getResSpec(attrResId).getDefaultResource().getValue();
+                decoded = attr.convertToResXmlFormat(resValue);
+            } catch (Exception e){
+                System.out.println("attr decode error: " + e.getMessage());
+            }
+
         }
 
         return decoded != null ? decoded : resValue.encodeAsResXmlAttr();
