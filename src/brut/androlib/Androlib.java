@@ -659,8 +659,10 @@ public class Androlib {
     }
 
     public static String getVersion() {
-        return ApktoolProperties.get("application.version");
+//        return ApktoolProperties.get("application.version");
+        return "0.0";
     }
+
 
     private File[] parseUsesFramework(Map<String, Object> usesFramework)
             throws AndrolibException {
